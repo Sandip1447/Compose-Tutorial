@@ -1,2 +1,2 @@
 # Compose-Tutorial
-Lean basics of compose
+Learn basics of compose
