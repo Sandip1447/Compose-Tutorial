@@ -1,13 +1,17 @@
 package com.freecodecloud.composetutorial.presentation.screen
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -50,3 +54,40 @@ fun SearchBarPreview() {
     }
 
 }
+
+// step - Align your element - modifiers
+
+@Composable
+fun AlignYourBodyElement(
+    modifier: Modifier
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = "icon",
+            contentScale = ContentScale.None,
+            modifier = Modifier
+                .size(88.dp)
+                .clip(CircleShape),
+        )
+        Text(
+            text = stringResource(id = R.string.profile_name),
+            style = MaterialTheme.typography.h3,
+            modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
+        )
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AlignYourBodyElementPreview() {
+    ComposeTutorialTheme {
+        AlignYourBodyElement(modifier = Modifier.padding(8.dp))
+    }
+}
+
+
