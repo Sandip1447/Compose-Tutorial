@@ -4,6 +4,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -61,7 +63,7 @@ fun SearchBarPreview() {
 
 @Composable
 fun AlignYourBodyElement(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @DrawableRes drawable: Int,
     @StringRes text: Int
 ) {
@@ -102,7 +104,7 @@ fun AlignYourBodyElementPreview() {
 
 @Composable
 fun FavouriteCollectionCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @DrawableRes drawable: Int,
     @StringRes text: Int
 ) {
@@ -139,4 +141,48 @@ fun FavouriteCollectionCardPreview() {
 }
 
 
+// Dummy list data
+private val alignYourBodyData = listOf(
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
+).map {
+    DrawableStringPair(it.first, it.second)
+}
+
+private data class DrawableStringPair(
+    @DrawableRes val drawable: Int,
+    @StringRes val text: Int
+)
+
+// Step - Align your body row - Arrangements
+
+@Composable
+fun AlignYourBodyRow(
+    modifier: Modifier = Modifier
+) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) {
+        items(alignYourBodyData) { item ->
+            AlignYourBodyElement(drawable = item.drawable, text = item.text)
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AlignYourBodyRowPreview() {
+
+    ComposeTutorialTheme {
+        AlignYourBodyRow()
+    }
+
+}
 
