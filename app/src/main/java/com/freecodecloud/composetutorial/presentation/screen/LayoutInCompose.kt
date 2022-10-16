@@ -337,3 +337,22 @@ fun SmoothBottomNavigationPreview() {
         SmoothBottomNavigation()
     }
 }
+
+// step - LayoutBasicApp - Scaffold
+
+@Composable
+fun LayoutBasicApp() {
+    Scaffold(
+        bottomBar = { SmoothBottomNavigationPreview() }
+    ) { padding ->
+        HomeScreen(Modifier.padding(padding))
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFEB3B, widthDp = 360, heightDp = 720)
+@Composable
+fun LayoutBasicAppPreview() {
+    ComposeTutorialTheme {
+        LayoutBasicApp()
+    }
+}
