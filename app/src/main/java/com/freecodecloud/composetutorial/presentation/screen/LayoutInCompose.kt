@@ -1,5 +1,7 @@
 package com.freecodecloud.composetutorial.presentation.screen
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -59,14 +61,16 @@ fun SearchBarPreview() {
 
 @Composable
 fun AlignYourBodyElement(
-    modifier: Modifier
+    modifier: Modifier,
+    @DrawableRes drawable: Int,
+    @StringRes text: Int
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painterResource(id = R.drawable.ic_launcher_background),
+            painterResource(id = drawable),
             contentDescription = "icon",
             contentScale = ContentScale.None,
             modifier = Modifier
@@ -74,7 +78,7 @@ fun AlignYourBodyElement(
                 .clip(CircleShape),
         )
         Text(
-            text = stringResource(id = R.string.profile_name),
+            text = stringResource(id = text),
             style = MaterialTheme.typography.h3,
             modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
         )
@@ -86,7 +90,11 @@ fun AlignYourBodyElement(
 @Composable
 fun AlignYourBodyElementPreview() {
     ComposeTutorialTheme {
-        AlignYourBodyElement(modifier = Modifier.padding(8.dp))
+        AlignYourBodyElement(
+            modifier = Modifier.padding(8.dp),
+            R.drawable.ic_launcher_background,
+            R.string.profile_name
+        )
     }
 }
 
