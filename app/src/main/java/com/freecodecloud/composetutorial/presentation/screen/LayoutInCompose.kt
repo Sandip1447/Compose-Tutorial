@@ -79,7 +79,7 @@ fun AlignYourBodyElement(
         )
         Text(
             text = stringResource(id = text),
-            style = MaterialTheme.typography.h3,
+            style = MaterialTheme.typography.subtitle1,
             modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
         )
     }
@@ -97,5 +97,46 @@ fun AlignYourBodyElementPreview() {
         )
     }
 }
+
+// step  - FavouriteCollectionCard - modifiers
+
+@Composable
+fun FavouriteCollectionCard(
+    modifier: Modifier,
+    @DrawableRes drawable: Int,
+    @StringRes text: Int
+) {
+
+    Surface(modifier = modifier, shape = MaterialTheme.shapes.small) {
+        Row(modifier = Modifier.width(192.dp), verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painterResource(id = drawable),
+                contentDescription = null,
+                modifier = Modifier.size(56.dp),
+                contentScale = ContentScale.Crop
+            )
+
+            Text(
+                text = stringResource(id = text),
+                style = MaterialTheme.typography.subtitle1,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FavouriteCollectionCardPreview() {
+
+    ComposeTutorialTheme {
+        FavouriteCollectionCard(
+            modifier = Modifier.padding(8.dp),
+            R.drawable.ic_launcher_background, R.string.dummy_title
+        )
+    }
+}
+
 
 

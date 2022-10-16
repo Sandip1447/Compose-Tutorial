@@ -7,4 +7,8 @@
 
     <string name="profile_name">Profile</string>
 
+    <string name="dummy_title">Lorem Ipsum</string>
+    <string name="dummy_content">Lorem ipsum dolor sit amet.</string>
+    <string name="dummy_description">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…</string>
+
 </resources>
