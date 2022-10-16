@@ -14,6 +14,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -282,5 +285,55 @@ fun HomeScreenPreview() {
 
     ComposeTutorialTheme {
         HomeScreen()
+    }
+}
+
+// step - Bottom navigation - Material
+
+@Composable
+fun SmoothBottomNavigation(modifier: Modifier = Modifier) {
+
+    BottomNavigation(modifier) {
+
+        BottomNavigationItem(
+            selected = true,
+            onClick = { /*TODO*/ },
+            icon = {
+                Icon(imageVector = Icons.Default.Home, contentDescription = null)
+            },
+            label = {
+                Text(text = stringResource(id = R.string.dummy_title))
+            }
+        )
+
+        BottomNavigationItem(
+            selected = false,
+            onClick = { /*TODO*/ },
+            icon = {
+                Icon(imageVector = Icons.Default.Notifications, contentDescription = null)
+            },
+            label = {
+                Text(text = stringResource(id = R.string.dummy_title))
+            }
+        )
+
+        BottomNavigationItem(
+            selected = false,
+            onClick = { /*TODO*/ },
+            icon = {
+                Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null)
+            },
+            label = {
+                Text(text = stringResource(id = R.string.dummy_title))
+            }
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFEB3B)
+@Composable
+fun SmoothBottomNavigationPreview() {
+    ComposeTutorialTheme {
+        SmoothBottomNavigation()
     }
 }
