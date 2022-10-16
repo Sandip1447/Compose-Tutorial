@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.freecodecloud.composetutorial.R
 import com.freecodecloud.composetutorial.presentation.ui.theme.ComposeTutorialTheme
+import java.util.*
 
 
 // https://developer.android.com/codelabs/jetpack-compose-layouts#0
@@ -217,5 +218,37 @@ fun FavoriteCollectionsGridPreview() {
 
     ComposeTutorialTheme {
         FavoriteCollectionsGrid()
+    }
+}
+
+// step - Home section - Slot APIs
+
+@Composable
+fun HomeSection(
+    modifier: Modifier = Modifier,
+    @StringRes title: Int,
+    content: @Composable () -> Unit // You can pass any composable here
+) {
+
+    Column(modifier = modifier) {
+        Text(
+            text = stringResource(id = title).uppercase(Locale.getDefault()),
+            style = MaterialTheme.typography.h5,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
+                .padding(horizontal = 16.dp)
+        )
+        content()
+    }
+
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFEB3B)
+@Composable
+fun HomeSectionPreview() {
+    ComposeTutorialTheme {
+        HomeSection(title = R.string.dummy_title) {
+            AlignYourBodyRow() // in our case we will be passing AlignYourBodyRow()
+        }
     }
 }
