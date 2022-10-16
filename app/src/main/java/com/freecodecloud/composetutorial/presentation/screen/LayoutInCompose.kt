@@ -5,6 +5,9 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -150,6 +153,7 @@ private val alignYourBodyData = listOf(
     R.drawable.ic_launcher_background to R.string.dummy_title,
     R.drawable.ic_launcher_background to R.string.dummy_title,
     R.drawable.ic_launcher_background to R.string.dummy_title,
+    R.drawable.ic_launcher_background to R.string.dummy_title,
 ).map {
     DrawableStringPair(it.first, it.second)
 }
@@ -186,3 +190,32 @@ fun AlignYourBodyRowPreview() {
 
 }
 
+// step - Favorite collections grid - Lazy grids
+
+@Composable
+fun FavoriteCollectionsGrid(
+    modifier: Modifier = Modifier
+) {
+
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.height(120.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) {
+        items(alignYourBodyData) { item ->
+            FavouriteCollectionCard(drawable = item.drawable, text = item.text)
+        }
+    }
+
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFFFEB3B)
+@Composable
+fun FavoriteCollectionsGridPreview() {
+
+    ComposeTutorialTheme {
+        FavoriteCollectionsGrid()
+    }
+}
